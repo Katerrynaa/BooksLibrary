@@ -23,25 +23,25 @@ class BooksApiView(generics.ListAPIView):
     pagination_class = BooksApiListPagination
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['genre']
-    # permission_classes = ( IsAuthenticated, )
+    permission_classes = ( IsAuthenticated, )
 
 
 class BookPostApiView(generics.CreateAPIView):
     queryset = Books.objects.all()
     serializer_class = BooksSerializer
-    # permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAuthenticated, )
 
 
 class BookUpdateApiView(generics.RetrieveUpdateAPIView):
     queryset = Books.objects.all()
     serializer_class = BooksSerializer
-    # permission_classes = (IsAdminUser, )
+    permission_classes = (IsAdminUser, )
 
 
 class BookDeleteApiView(generics.RetrieveDestroyAPIView):
     queryset = Books.objects.all()
     serializer_class = BooksSerializer
-    # permission_classes = (IsAdminUser, )
+    permission_classes = (IsAdminUser, )
 
 
 class ThrottleView(APIView):
@@ -58,19 +58,19 @@ class RatingView(generics.ListAPIView):
     queryset = Books.objects.all()
     serializer_class = RatingSerializer
     pagination_class = BooksApiListPagination
-    # permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAuthenticated, )
 
 
 class PriceView(generics.ListAPIView):
     queryset = Books.objects.all()
     serializer_class = PriceSerializer
     pagination_class = BooksApiListPagination
-    # permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAuthenticated, )
 
 
 class WeeklyRecommendationView(generics.ListAPIView):
     serializer_class = WeeklySerializer
-    # permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAuthenticated, )
 
     def get_queryset(self):
          return [Books.objects.get(pk=73)]
